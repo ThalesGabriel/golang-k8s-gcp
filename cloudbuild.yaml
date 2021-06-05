@@ -1,0 +1,16 @@
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build','-t','gcr.io/golang-k8s-gcp:latest ', '-t', 'gcr.io/golang-k8s-gcp:$SHORT_SHA','.']
+
+  - name: 'docker'
+    args: ['run','-d','--name','goapp','gcr.io/golang-k8s-gcp:latest']
+
+  - name: 'docker'
+    args: ['exec','goapp','go','test']
+
+    # - name: 'docker'
+    #   args: ['push', 'gcr.io/golang-k8s-gcp:latest']
+
+    # - name: 'docker'
+    #   args: ['push', 'gcr.io/golang-k8s-gcp:$SHORT_SHA']
