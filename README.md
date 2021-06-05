@@ -1,1 +1,1 @@
-# golang-k8s-gcp
+# Simple app to test GCP with k8s
